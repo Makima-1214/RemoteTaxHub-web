@@ -4,6 +4,8 @@ import { useState, use } from 'react';
 import Link from 'next/link';
 import countriesData from '@/data/countries.json';
 import { calculateTax, Country } from '@/lib/taxCalculator';
+import { getTranslation } from '@/lib/translations';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 import { PieChart, Pie, Cell, ResponsiveContainer, Tooltip, BarChart, Bar, XAxis, YAxis, CartesianGrid } from 'recharts';
 import jsPDF from 'jspdf';
 
@@ -14,14 +16,29 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
   const country = countriesData.find((c) => c.id === slug) as Country;
 
   const [salary, setSalary] = useState(60000);
+  const [currentLang, setCurrentLang] = useState(() => {
+    if (typeof window !== 'undefined') {
+      return localStorage.getItem('language') || 'en';
+    }
+    return 'en';
+  });
+
+  const handleLanguageChange = (lang: string) => {
+    setCurrentLang(lang);
+    if (typeof window !== 'undefined') {
+      localStorage.setItem('language', lang);
+    }
+  };
+
+  const t = getTranslation(currentLang);
 
   if (!country) {
     return (
       <div className="min-h-screen flex items-center justify-center bg-white">
         <div className="text-center">
-          <h1 className="text-4xl font-bold mb-4 text-gray-900">Country Not Found</h1>
-          <Link href="/" className="text-gray-600 hover:text-gray-900 underline">
-            Back to Home
+          <h1 className="text-4xl font-bold mb-4 text-zinc-900">{t.countryNotFound}</h1>
+          <Link href="/" className="text-zinc-600 hover:text-zinc-900 underline">
+            {t.backToHome}
           </Link>
         </div>
       </div>
@@ -70,15 +87,23 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
   return (
     <div className="min-h-screen bg-zinc-50">
       {/* Navigation */}
-      <nav className="fixed top-0 w-full bg-white/80 backdrop-blur-md border-b border-zinc-200 z-50">
+      <nav className="fixed top-0 w-full bg-white/95 backdrop-blur-sm border-b border-zinc-200 z-50">
         <div className="max-w-6xl mx-auto px-6">
-          <div className="flex justify-between items-center h-16">
-            <Link href="/" className="font-bold text-lg">
-              Remote<span className="text-blue-600">Tax</span>Hub
+          <div className="flex justify-between items-center h-14">
+            <Link href="/" className="flex items-center gap-2.5 group">
+              <svg width="32" height="32" viewBox="0 0 32 32" fill="none" xmlns="http://www.w3.org/2000/svg" className="group-hover:scale-105 transition-transform">
+                <rect width="32" height="32" rx="6" fill="#18181B"/>
+                <path d="M8 12L16 8L24 12V20L16 24L8 20V12Z" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                <path d="M16 8V16M16 16L8 20M16 16L24 20" stroke="white" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+              </svg>
+              <span className="font-black text-lg">RemoteTaxHub</span>
             </Link>
-            <Link href="/compare" className="text-sm px-4 py-2 bg-blue-600 text-white rounded-md hover:bg-blue-700">
-              Compare
-            </Link>
+            <div className="flex items-center gap-6">
+              <Link href="/compare" className="text-sm px-4 py-1.5 bg-zinc-900 text-white rounded font-medium hover:bg-zinc-800 transition-colors">
+                {t.compare}
+              </Link>
+              <LanguageSwitcher currentLang={currentLang} onLanguageChange={handleLanguageChange} />
+            </div>
           </div>
         </div>
       </nav>
@@ -90,7 +115,7 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
             </svg>
-            Back
+            {t.back}
           </Link>
           <h1 className="text-4xl font-bold text-zinc-900 mb-3">{country.name}</h1>
           <p className="text-lg text-zinc-600">{country.description}</p>
@@ -100,11 +125,11 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
       <div className="max-w-6xl mx-auto px-6 py-12">
         {/* Salary Input */}
         <div className="bg-white border border-zinc-200 rounded-xl p-8 mb-8">
-          <h2 className="text-2xl font-bold mb-8 text-zinc-900">Your Take-Home Pay</h2>
+          <h2 className="text-2xl font-bold mb-8 text-zinc-900">{t.yourTakeHomePay}</h2>
           
           <div className="mb-8">
             <label className="block text-sm font-semibold text-zinc-900 mb-4">
-              Annual Salary ({country.currency_symbol})
+              {t.annualSalary} ({country.currency_symbol})
             </label>
             <input
               type="range"
@@ -113,7 +138,7 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
               step="5000"
               value={salary}
               onChange={(e) => setSalary(Number(e.target.value))}
-              className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-blue-600"
+              className="w-full h-2 bg-zinc-200 rounded-lg appearance-none cursor-pointer accent-zinc-900"
             />
             <div className="flex justify-between mt-4">
               <span className="text-sm text-zinc-500">{country.currency_symbol}10,000</span>
@@ -129,72 +154,72 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
               type="number"
               value={salary}
               onChange={(e) => setSalary(Number(e.target.value))}
-              className="border border-zinc-300 rounded-lg px-4 py-3 text-lg focus:border-blue-600 focus:ring-1 focus:ring-blue-600 outline-none"
-              placeholder="Custom amount"
+              className="border border-zinc-300 rounded-lg px-4 py-3 text-lg focus:border-zinc-900 focus:ring-1 focus:ring-zinc-900 outline-none"
+              placeholder={t.customAmount}
             />
             <button
               onClick={downloadPDF}
-              className="bg-blue-600 text-white px-6 py-3 rounded-lg font-semibold hover:bg-blue-700 transition-colors flex items-center justify-center gap-2"
+              className="bg-zinc-900 text-white px-6 py-3 rounded-lg font-semibold hover:bg-zinc-800 transition-colors flex items-center justify-center gap-2"
             >
               <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 10v6m0 0l-3-3m3 3l3-3m2 8H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
               </svg>
-              Download PDF
+              {t.downloadPDF}
             </button>
           </div>
         </div>
 
         {/* Results Grid */}
         <div className="grid md:grid-cols-3 gap-6 mb-8">
-          <div className="bg-gray-50 border border-gray-200 rounded-xl p-6">
-            <div className="text-sm text-gray-600 mb-2 font-medium">Gross Salary</div>
-            <div className="text-4xl font-bold text-gray-900 mb-1">
+          <div className="bg-zinc-50 border border-zinc-200 rounded-xl p-6">
+            <div className="text-sm text-zinc-600 mb-2 font-medium">{t.grossSalary}</div>
+            <div className="text-4xl font-bold text-zinc-900 mb-1">
               {country.currency_symbol}{calculation.grossSalary.toLocaleString()}
             </div>
-            <div className="text-sm text-gray-500">Annual income</div>
+            <div className="text-sm text-zinc-500">{t.annualIncome}</div>
           </div>
           
           <div className="bg-red-50 border border-red-200 rounded-xl p-6">
-            <div className="text-sm text-red-700 mb-2 font-medium">Total Tax</div>
+            <div className="text-sm text-red-700 mb-2 font-medium">{t.totalTax}</div>
             <div className="text-4xl font-bold text-red-600 mb-1">
               -{country.currency_symbol}{calculation.totalTax.toLocaleString()}
             </div>
             <div className="text-sm text-red-600">
-              {calculation.effectiveTaxRate}% effective rate
+              {calculation.effectiveTaxRate}% {t.effectiveRate}
             </div>
           </div>
           
           <div className="bg-green-50 border border-green-200 rounded-xl p-6">
-            <div className="text-sm text-green-700 mb-2 font-medium">Net Salary</div>
+            <div className="text-sm text-green-700 mb-2 font-medium">{t.netSalary}</div>
             <div className="text-4xl font-bold text-green-600 mb-1">
               {country.currency_symbol}{calculation.netSalary.toLocaleString()}
             </div>
             <div className="text-sm text-green-600">
-              {country.currency_symbol}{calculation.monthlyNet.toLocaleString()}/month
+              {country.currency_symbol}{calculation.monthlyNet.toLocaleString()}{t.perMonth}
             </div>
           </div>
         </div>
 
         {/* Tax Breakdown */}
         <div className="grid md:grid-cols-2 gap-8 mb-8">
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-xl font-bold mb-6 text-gray-900">Tax Breakdown</h3>
+          <div className="bg-white border border-zinc-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold mb-6 text-zinc-900">{t.taxBreakdown}</h3>
             <div className="space-y-4 mb-6">
-              <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-                <span className="text-gray-600">Income Tax</span>
-                <span className="font-semibold text-gray-900">
+              <div className="flex justify-between items-center pb-3 border-b border-zinc-100">
+                <span className="text-zinc-600">{t.incomeTax}</span>
+                <span className="font-semibold text-zinc-900">
                   {country.currency_symbol}{calculation.incomeTax.toLocaleString()}
                 </span>
               </div>
-              <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-                <span className="text-gray-600">Social Security</span>
-                <span className="font-semibold text-gray-900">
+              <div className="flex justify-between items-center pb-3 border-b border-zinc-100">
+                <span className="text-zinc-600">{t.socialSecurity}</span>
+                <span className="font-semibold text-zinc-900">
                   {country.currency_symbol}{calculation.socialSecurity.toLocaleString()}
                 </span>
               </div>
               <div className="flex justify-between items-center pt-2">
-                <span className="font-semibold text-gray-900">Total Deductions</span>
-                <span className="font-bold text-gray-900">
+                <span className="font-semibold text-zinc-900">{t.totalDeductions}</span>
+                <span className="font-bold text-zinc-900">
                   {country.currency_symbol}{calculation.totalTax.toLocaleString()}
                 </span>
               </div>
@@ -223,23 +248,23 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
             </div>
           </div>
 
-          <div className="bg-white border border-gray-200 rounded-xl p-6">
-            <h3 className="text-xl font-bold mb-6 text-gray-900">Monthly Budget</h3>
+          <div className="bg-white border border-zinc-200 rounded-xl p-6">
+            <h3 className="text-xl font-bold mb-6 text-zinc-900">{t.monthlyBudget}</h3>
             <div className="space-y-4 mb-6">
-              <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-                <span className="text-gray-600">Monthly Net Income</span>
-                <span className="font-semibold text-gray-900">
+              <div className="flex justify-between items-center pb-3 border-b border-zinc-100">
+                <span className="text-zinc-600">{t.monthlyNetIncome}</span>
+                <span className="font-semibold text-zinc-900">
                   {country.currency_symbol}{calculation.monthlyNet.toLocaleString()}
                 </span>
               </div>
-              <div className="flex justify-between items-center pb-3 border-b border-gray-100">
-                <span className="text-gray-600">Cost of Living</span>
-                <span className="font-semibold text-gray-900">
+              <div className="flex justify-between items-center pb-3 border-b border-zinc-100">
+                <span className="text-zinc-600">{t.costOfLiving}</span>
+                <span className="font-semibold text-zinc-900">
                   {country.currency_symbol}{calculation.monthlyCostOfLiving.toLocaleString()}
                 </span>
               </div>
               <div className="flex justify-between items-center pt-2">
-                <span className="font-semibold text-gray-900">Disposable Income</span>
+                <span className="font-semibold text-zinc-900">{t.disposableIncome}</span>
                 <span className={`font-bold ${calculation.monthlyDisposable > 0 ? 'text-green-600' : 'text-red-600'}`}>
                   {country.currency_symbol}{calculation.monthlyDisposable.toLocaleString()}
                 </span>
@@ -253,7 +278,7 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
                   <XAxis dataKey="name" tick={{ fontSize: 12 }} />
                   <YAxis tick={{ fontSize: 12 }} />
                   <Tooltip formatter={(value) => `${country.currency_symbol}${Number(value || 0).toLocaleString()}`} />
-                  <Bar dataKey="value" fill="#111827" radius={[8, 8, 0, 0]} />
+                  <Bar dataKey="value" fill="#18181B" radius={[8, 8, 0, 0]} />
                 </BarChart>
               </ResponsiveContainer>
             </div>
@@ -261,26 +286,26 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
         </div>
 
         {/* Tax Brackets Table */}
-        <div className="bg-white border border-gray-200 rounded-xl p-6 mb-8">
-          <h3 className="text-xl font-bold mb-6 text-gray-900">Tax Brackets in {country.name}</h3>
+        <div className="bg-white border border-zinc-200 rounded-xl p-6 mb-8">
+          <h3 className="text-xl font-bold mb-6 text-zinc-900">{t.taxBracketsIn} {country.name}</h3>
           <div className="overflow-x-auto">
             <table className="w-full">
               <thead>
-                <tr className="border-b border-gray-200">
-                  <th className="text-left py-3 px-4 text-sm font-semibold text-gray-900">Income Range</th>
-                  <th className="text-right py-3 px-4 text-sm font-semibold text-gray-900">Tax Rate</th>
+                <tr className="border-b border-zinc-200">
+                  <th className="text-left py-3 px-4 text-sm font-semibold text-zinc-900">{t.incomeRange}</th>
+                  <th className="text-right py-3 px-4 text-sm font-semibold text-zinc-900">{t.taxRate}</th>
                 </tr>
               </thead>
               <tbody>
                 {country.tax_brackets.map((bracket, index) => (
-                  <tr key={index} className="border-b border-gray-100 hover:bg-gray-50">
-                    <td className="py-3 px-4 text-sm text-gray-600">
+                  <tr key={index} className="border-b border-zinc-100 hover:bg-zinc-50">
+                    <td className="py-3 px-4 text-sm text-zinc-600">
                       {country.currency_symbol}{bracket.min.toLocaleString()} - {' '}
                       {bracket.max === 999999999 
                         ? '∞' 
                         : `${country.currency_symbol}${bracket.max.toLocaleString()}`}
                     </td>
-                    <td className="text-right py-3 px-4 font-semibold text-gray-900 text-sm">
+                    <td className="text-right py-3 px-4 font-semibold text-zinc-900 text-sm">
                       {bracket.rate}%
                     </td>
                   </tr>
@@ -288,32 +313,32 @@ export default function CountryPage({ params }: { params: Promise<{ slug: string
               </tbody>
             </table>
           </div>
-          <div className="mt-4 text-sm text-gray-600">
-            Social Security Rate: <span className="font-semibold text-gray-900">{country.social_security}%</span>
+          <div className="mt-4 text-sm text-zinc-600">
+            {t.socialSecurityRate}: <span className="font-semibold text-zinc-900">{country.social_security}%</span>
           </div>
         </div>
 
         {/* Compare CTA */}
-        <div className="bg-gray-900 text-white rounded-xl p-10 text-center">
+        <div className="bg-zinc-900 text-white rounded-xl p-10 text-center">
           <h2 className="text-2xl font-bold mb-3">
-            Want to compare with other countries?
+            {t.wantToCompare}
           </h2>
-          <p className="text-gray-400 mb-6">
-            See how {country.name} stacks up against other destinations
+          <p className="text-zinc-400 mb-6">
+            {t.seeHowStacks.replace('{country}', country.name)}
           </p>
           <Link
             href="/compare"
-            className="inline-block px-6 py-3 bg-white text-gray-900 font-semibold rounded-lg hover:bg-gray-100 transition-colors"
+            className="inline-block px-6 py-3 bg-white text-zinc-900 font-semibold rounded-lg hover:bg-zinc-100 transition-colors"
           >
-            Compare Countries
+            {t.compareCountries}
           </Link>
         </div>
       </div>
 
       {/* Footer */}
-      <footer className="bg-gray-50 border-t border-gray-200 py-12 mt-20">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-gray-600">
-          <p>© 2026 RemoteTaxHub. Tax calculations are estimates. Consult a tax professional for accurate advice.</p>
+      <footer className="bg-zinc-50 border-t border-zinc-200 py-12 mt-20">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-sm text-zinc-600">
+          <p>{t.taxCalculationsDisclaimer}</p>
         </div>
       </footer>
     </div>

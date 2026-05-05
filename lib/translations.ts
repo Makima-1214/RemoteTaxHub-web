@@ -89,11 +89,42 @@ const englishTranslations = {
   terms: 'Terms of Service',
   disclaimer: 'Disclaimer',
   footerCopyright: '© 2026 RemoteTaxHub. Tax estimates only. Consult a pro for real advice.',
+  
+  // Country Page
+  countryNotFound: 'Country Not Found',
+  backToHome: 'Back to Home',
+  back: 'Back',
+  yourTakeHomePay: 'Your Take-Home Pay',
+  annualSalary: 'Annual Salary',
+  customAmount: 'Custom amount',
+  downloadPDF: 'Download PDF',
+  grossSalary: 'Gross Salary',
+  annualIncome: 'Annual income',
+  totalTax: 'Total Tax',
+  effectiveRate: 'effective rate',
+  netSalary: 'Net Salary',
+  perMonth: '/month',
+  taxBreakdown: 'Tax Breakdown',
+  incomeTax: 'Income Tax',
+  socialSecurity: 'Social Security',
+  totalDeductions: 'Total Deductions',
+  monthlyBudget: 'Monthly Budget',
+  monthlyNetIncome: 'Monthly Net Income',
+  costOfLiving: 'Cost of Living',
+  disposableIncome: 'Disposable Income',
+  taxBracketsIn: 'Tax Brackets in',
+  incomeRange: 'Income Range',
+  taxRate: 'Tax Rate',
+  socialSecurityRate: 'Social Security Rate',
+  wantToCompare: 'Want to compare with other countries?',
+  seeHowStacks: 'See how {country} stacks up against other destinations',
+  compareCountries: 'Compare Countries',
+  taxCalculationsDisclaimer: 'Tax calculations are estimates. Consult a tax professional for accurate advice.',
 };
 
 export type TranslationKey = keyof typeof englishTranslations;
 
-export const translations: Record<string, typeof englishTranslations> = {
+export const translations: Record<string, Partial<typeof englishTranslations>> = {
   en: englishTranslations,
   
   id: {
@@ -154,6 +185,37 @@ export const translations: Record<string, typeof englishTranslations> = {
     terms: 'Syarat Layanan',
     disclaimer: 'Disclaimer',
     footerCopyright: '© 2026 RemoteTaxHub. Estimasi pajak saja. Konsultasi profesional untuk saran riil.',
+    
+    // Country Page
+    countryNotFound: 'Negara Tidak Ditemukan',
+    backToHome: 'Kembali ke Beranda',
+    back: 'Kembali',
+    yourTakeHomePay: 'Gaji Bersihmu',
+    annualSalary: 'Gaji Tahunan',
+    customAmount: 'Jumlah custom',
+    downloadPDF: 'Download PDF',
+    grossSalary: 'Gaji Kotor',
+    annualIncome: 'Pendapatan tahunan',
+    totalTax: 'Total Pajak',
+    effectiveRate: 'tarif efektif',
+    netSalary: 'Gaji Bersih',
+    perMonth: '/bulan',
+    taxBreakdown: 'Rincian Pajak',
+    incomeTax: 'Pajak Penghasilan',
+    socialSecurity: 'Jaminan Sosial',
+    totalDeductions: 'Total Potongan',
+    monthlyBudget: 'Budget Bulanan',
+    monthlyNetIncome: 'Pendapatan Bersih Bulanan',
+    costOfLiving: 'Biaya Hidup',
+    disposableIncome: 'Pendapatan Disposable',
+    taxBracketsIn: 'Bracket Pajak di',
+    incomeRange: 'Rentang Pendapatan',
+    taxRate: 'Tarif Pajak',
+    socialSecurityRate: 'Tarif Jaminan Sosial',
+    wantToCompare: 'Mau bandingkan dengan negara lain?',
+    seeHowStacks: 'Lihat bagaimana {country} dibanding destinasi lain',
+    compareCountries: 'Bandingkan Negara',
+    taxCalculationsDisclaimer: 'Kalkulasi pajak adalah estimasi. Konsultasi profesional pajak untuk saran akurat.',
   },
   
   es: {
@@ -281,14 +343,21 @@ export const translations: Record<string, typeof englishTranslations> = {
 
 // Fill in missing translations with English fallback
 Object.keys(translations).forEach((lang) => {
-  if (lang !== 'en') {
+  if (lang !== 'en' && lang !== 'id') {
     translations[lang as keyof typeof translations] = {
-      ...translations.en,
+      ...englishTranslations,
       ...translations[lang as keyof typeof translations],
-    };
+    } as typeof englishTranslations;
   }
 });
 
-export function getTranslation(lang: string): typeof translations.en {
-  return translations[lang as keyof typeof translations] || translations.en;
+export function getTranslation(lang: string): typeof englishTranslations {
+  const translation = translations[lang as keyof typeof translations];
+  if (!translation) return englishTranslations;
+  
+  // Merge with English as fallback
+  return {
+    ...englishTranslations,
+    ...translation,
+  } as typeof englishTranslations;
 }

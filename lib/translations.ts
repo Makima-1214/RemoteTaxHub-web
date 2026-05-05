@@ -120,6 +120,25 @@ const englishTranslations = {
   seeHowStacks: 'See how {country} stacks up against other destinations',
   compareCountries: 'Compare Countries',
   taxCalculationsDisclaimer: 'Tax calculations are estimates. Consult a tax professional for accurate advice.',
+  
+  // Compare Page
+  compareTitle: 'Compare Countries',
+  compareDesc: 'See how two countries stack up side-by-side',
+  selectCountry1: 'Select first country',
+  selectCountry2: 'Select second country',
+  selectCountryPlaceholder: 'Choose a country...',
+  vs: 'vs',
+  comparison: 'Comparison',
+  country: 'Country',
+  effectiveTaxRate: 'Effective Tax Rate',
+  takeHomePay: 'Take-Home Pay',
+  monthlyCost: 'Monthly Cost',
+  leftOver: 'Left Over',
+  winner: 'Winner',
+  taxComparison: 'Tax Comparison',
+  monthlyComparison: 'Monthly Comparison',
+  keyMetrics: 'Key Metrics',
+  basedOnSalary: 'Based on annual salary of',
 };
 
 export type TranslationKey = keyof typeof englishTranslations;
@@ -216,6 +235,25 @@ export const translations: Record<string, Partial<typeof englishTranslations>> =
     seeHowStacks: 'Lihat bagaimana {country} dibanding destinasi lain',
     compareCountries: 'Bandingkan Negara',
     taxCalculationsDisclaimer: 'Kalkulasi pajak adalah estimasi. Konsultasi profesional pajak untuk saran akurat.',
+    
+    // Compare Page
+    compareTitle: 'Bandingkan Negara',
+    compareDesc: 'Lihat perbandingan dua negara secara berdampingan',
+    selectCountry1: 'Pilih negara pertama',
+    selectCountry2: 'Pilih negara kedua',
+    selectCountryPlaceholder: 'Pilih negara...',
+    vs: 'vs',
+    comparison: 'Perbandingan',
+    country: 'Negara',
+    effectiveTaxRate: 'Tarif Pajak Efektif',
+    takeHomePay: 'Gaji Bersih',
+    monthlyCost: 'Biaya Bulanan',
+    leftOver: 'Sisa',
+    winner: 'Pemenang',
+    taxComparison: 'Perbandingan Pajak',
+    monthlyComparison: 'Perbandingan Bulanan',
+    keyMetrics: 'Metrik Utama',
+    basedOnSalary: 'Berdasarkan gaji tahunan',
   },
   
   es: {

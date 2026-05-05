@@ -1,0 +1,558 @@
+[
+  {
+    "id": "united-states",
+    "name": "United States",
+    "flag": "🇺🇸",
+    "flag_code": "us",
+    "currency": "USD",
+    "currency_symbol": "$",
+    "cost_of_living": 3500,
+    "tax_brackets": [
+      { "min": 0, "max": 11000, "rate": 10 },
+      { "min": 11001, "max": 44725, "rate": 12 },
+      { "min": 44726, "max": 95375, "rate": 22 },
+      { "min": 95376, "max": 182100, "rate": 24 },
+      { "min": 182101, "max": 231250, "rate": 32 },
+      { "min": 231251, "max": 578125, "rate": 35 },
+      { "min": 578126, "max": 999999999, "rate": 37 }
+    ],
+    "social_security": 7.65,
+    "description": "Progressive tax system with federal and state taxes"
+  },
+  {
+    "id": "united-kingdom",
+    "name": "United Kingdom",
+    "flag": "🇬🇧",
+    "flag_code": "gb",
+    "currency": "GBP",
+    "currency_symbol": "£",
+    "cost_of_living": 2800,
+    "tax_brackets": [
+      { "min": 0, "max": 12570, "rate": 0 },
+      { "min": 12571, "max": 50270, "rate": 20 },
+      { "min": 50271, "max": 125140, "rate": 40 },
+      { "min": 125141, "max": 999999999, "rate": 45 }
+    ],
+    "social_security": 12,
+    "description": "PAYE system with National Insurance contributions"
+  },
+  {
+    "id": "germany",
+    "name": "Germany",
+    "flag": "🇩🇪",
+    "flag_code": "de",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 2500,
+    "tax_brackets": [
+      { "min": 0, "max": 10908, "rate": 0 },
+      { "min": 10909, "max": 62809, "rate": 14 },
+      { "min": 62810, "max": 277825, "rate": 42 },
+      { "min": 277826, "max": 999999999, "rate": 45 }
+    ],
+    "social_security": 20,
+    "description": "Progressive tax with solidarity surcharge"
+  },
+  {
+    "id": "canada",
+    "name": "Canada",
+    "flag": "🇨🇦",
+    "flag_code": "ca",
+    "currency": "CAD",
+    "currency_symbol": "C$",
+    "cost_of_living": 2800,
+    "tax_brackets": [
+      { "min": 0, "max": 53359, "rate": 15 },
+      { "min": 53360, "max": 106717, "rate": 20.5 },
+      { "min": 106718, "max": 165430, "rate": 26 },
+      { "min": 165431, "max": 235675, "rate": 29 },
+      { "min": 235676, "max": 999999999, "rate": 33 }
+    ],
+    "social_security": 7.5,
+    "description": "Federal and provincial tax system"
+  },
+  {
+    "id": "australia",
+    "name": "Australia",
+    "flag": "🇦🇺",
+    "flag_code": "au",
+    "currency": "AUD",
+    "currency_symbol": "A$",
+    "cost_of_living": 3200,
+    "tax_brackets": [
+      { "min": 0, "max": 18200, "rate": 0 },
+      { "min": 18201, "max": 45000, "rate": 19 },
+      { "min": 45001, "max": 120000, "rate": 32.5 },
+      { "min": 120001, "max": 180000, "rate": 37 },
+      { "min": 180001, "max": 999999999, "rate": 45 }
+    ],
+    "social_security": 2,
+    "description": "Progressive tax with Medicare levy"
+  },
+  {
+    "id": "netherlands",
+    "name": "Netherlands",
+    "flag": "🇳🇱",
+    "flag_code": "nl",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 2600,
+    "tax_brackets": [
+      { "min": 0, "max": 73031, "rate": 36.93 },
+      { "min": 73032, "max": 999999999, "rate": 49.5 }
+    ],
+    "social_security": 0,
+    "description": "Two-bracket system with high rates"
+  },
+  {
+    "id": "switzerland",
+    "name": "Switzerland",
+    "flag": "🇨🇭",
+    "flag_code": "ch",
+    "currency": "CHF",
+    "currency_symbol": "CHF",
+    "cost_of_living": 4500,
+    "tax_brackets": [
+      { "min": 0, "max": 17800, "rate": 0 },
+      { "min": 17801, "max": 31600, "rate": 0.77 },
+      { "min": 31601, "max": 41400, "rate": 0.88 },
+      { "min": 41401, "max": 55200, "rate": 2.64 },
+      { "min": 55201, "max": 72500, "rate": 2.97 },
+      { "min": 72501, "max": 78100, "rate": 5.94 },
+      { "min": 78101, "max": 103600, "rate": 6.6 },
+      { "min": 103601, "max": 134600, "rate": 8.8 },
+      { "min": 134601, "max": 176000, "rate": 11 },
+      { "min": 176001, "max": 755200, "rate": 13.2 },
+      { "min": 755201, "max": 999999999, "rate": 11.5 }
+    ],
+    "social_security": 6.4,
+    "description": "Low federal tax, cantonal taxes vary"
+  },
+  {
+    "id": "singapore",
+    "name": "Singapore",
+    "flag": "🇸🇬",
+    "flag_code": "sg",
+    "currency": "SGD",
+    "currency_symbol": "S$",
+    "cost_of_living": 3500,
+    "tax_brackets": [
+      { "min": 0, "max": 20000, "rate": 0 },
+      { "min": 20001, "max": 30000, "rate": 2 },
+      { "min": 30001, "max": 40000, "rate": 3.5 },
+      { "min": 40001, "max": 80000, "rate": 7 },
+      { "min": 80001, "max": 120000, "rate": 11.5 },
+      { "min": 120001, "max": 160000, "rate": 15 },
+      { "min": 160001, "max": 200000, "rate": 18 },
+      { "min": 200001, "max": 240000, "rate": 19 },
+      { "min": 240001, "max": 280000, "rate": 19.5 },
+      { "min": 280001, "max": 320000, "rate": 20 },
+      { "min": 320001, "max": 500000, "rate": 22 },
+      { "min": 500001, "max": 1000000, "rate": 23 },
+      { "min": 1000001, "max": 999999999, "rate": 24 }
+    ],
+    "social_security": 0,
+    "description": "Low tax haven for high earners"
+  },
+  {
+    "id": "uae",
+    "name": "United Arab Emirates",
+    "flag": "🇦🇪",
+    "flag_code": "ae",
+    "currency": "AED",
+    "currency_symbol": "AED",
+    "cost_of_living": 3000,
+    "tax_brackets": [
+      { "min": 0, "max": 999999999, "rate": 0 }
+    ],
+    "social_security": 0,
+    "description": "No personal income tax"
+  },
+  {
+    "id": "ireland",
+    "name": "Ireland",
+    "flag": "🇮🇪",
+    "flag_code": "ie",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 2700,
+    "tax_brackets": [
+      { "min": 0, "max": 40000, "rate": 20 },
+      { "min": 40001, "max": 999999999, "rate": 40 }
+    ],
+    "social_security": 4,
+    "description": "Two-tier system with PRSI"
+  },
+  {
+    "id": "sweden",
+    "name": "Sweden",
+    "flag": "🇸🇪",
+    "flag_code": "se",
+    "currency": "SEK",
+    "currency_symbol": "kr",
+    "cost_of_living": 2400,
+    "tax_brackets": [
+      { "min": 0, "max": 523200, "rate": 32 },
+      { "min": 523201, "max": 999999999, "rate": 52 }
+    ],
+    "social_security": 7,
+    "description": "High tax welfare state"
+  },
+  {
+    "id": "norway",
+    "name": "Norway",
+    "flag": "🇳🇴",
+    "flag_code": "no",
+    "currency": "NOK",
+    "currency_symbol": "kr",
+    "cost_of_living": 3000,
+    "tax_brackets": [
+      { "min": 0, "max": 190350, "rate": 22 },
+      { "min": 190351, "max": 267900, "rate": 23.6 },
+      { "min": 267901, "max": 643800, "rate": 35.6 },
+      { "min": 643801, "max": 999999999, "rate": 39.6 }
+    ],
+    "social_security": 8.2,
+    "description": "Progressive tax with high rates"
+  },
+  {
+    "id": "denmark",
+    "name": "Denmark",
+    "flag": "🇩🇰",
+    "flag_code": "dk",
+    "currency": "DKK",
+    "currency_symbol": "kr",
+    "cost_of_living": 2800,
+    "tax_brackets": [
+      { "min": 0, "max": 568900, "rate": 37.5 },
+      { "min": 568901, "max": 999999999, "rate": 52.07 }
+    ],
+    "social_security": 8,
+    "description": "One of the highest tax rates globally"
+  },
+  {
+    "id": "new-zealand",
+    "name": "New Zealand",
+    "flag": "🇳🇿",
+    "flag_code": "nz",
+    "currency": "NZD",
+    "currency_symbol": "NZ$",
+    "cost_of_living": 2600,
+    "tax_brackets": [
+      { "min": 0, "max": 14000, "rate": 10.5 },
+      { "min": 14001, "max": 48000, "rate": 17.5 },
+      { "min": 48001, "max": 70000, "rate": 30 },
+      { "min": 70001, "max": 180000, "rate": 33 },
+      { "min": 180001, "max": 999999999, "rate": 39 }
+    ],
+    "social_security": 0,
+    "description": "PAYE system with ACC levy"
+  },
+  {
+    "id": "austria",
+    "name": "Austria",
+    "flag": "🇦🇹",
+    "flag_code": "at",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 2400,
+    "tax_brackets": [
+      { "min": 0, "max": 11000, "rate": 0 },
+      { "min": 11001, "max": 18000, "rate": 20 },
+      { "min": 18001, "max": 31000, "rate": 30 },
+      { "min": 31001, "max": 60000, "rate": 40 },
+      { "min": 60001, "max": 90000, "rate": 48 },
+      { "min": 90001, "max": 1000000, "rate": 50 },
+      { "min": 1000001, "max": 999999999, "rate": 55 }
+    ],
+    "social_security": 18,
+    "description": "Progressive tax with high social contributions"
+  },
+  {
+    "id": "thailand",
+    "name": "Thailand",
+    "flag": "🇹🇭",
+    "flag_code": "th",
+    "currency": "THB",
+    "currency_symbol": "฿",
+    "cost_of_living": 1300,
+    "tax_brackets": [
+      { "min": 0, "max": 4285, "rate": 0 },
+      { "min": 4286, "max": 8571, "rate": 5 },
+      { "min": 8572, "max": 14285, "rate": 10 },
+      { "min": 14286, "max": 21428, "rate": 15 },
+      { "min": 21429, "max": 28571, "rate": 20 },
+      { "min": 28572, "max": 57142, "rate": 25 },
+      { "min": 57143, "max": 142857, "rate": 30 },
+      { "min": 142858, "max": 999999999, "rate": 35 }
+    ],
+    "social_security": 5,
+    "description": "Digital nomad friendly with low cost of living"
+  },
+  {
+    "id": "indonesia",
+    "name": "Indonesia",
+    "flag": "🇮🇩",
+    "flag_code": "id",
+    "currency": "IDR",
+    "currency_symbol": "Rp",
+    "cost_of_living": 900,
+    "tax_brackets": [
+      { "min": 0, "max": 3375, "rate": 5 },
+      { "min": 3376, "max": 15625, "rate": 15 },
+      { "min": 15626, "max": 31250, "rate": 25 },
+      { "min": 31251, "max": 312500, "rate": 30 },
+      { "min": 312501, "max": 999999999, "rate": 35 }
+    ],
+    "social_security": 3,
+    "description": "Bali digital nomad hub with low taxes"
+  },
+  {
+    "id": "vietnam",
+    "name": "Vietnam",
+    "flag": "🇻🇳",
+    "flag_code": "vn",
+    "currency": "VND",
+    "currency_symbol": "₫",
+    "cost_of_living": 1000,
+    "tax_brackets": [
+      { "min": 0, "max": 2880, "rate": 5 },
+      { "min": 2881, "max": 5760, "rate": 10 },
+      { "min": 5761, "max": 10368, "rate": 15 },
+      { "min": 10369, "max": 18432, "rate": 20 },
+      { "min": 18433, "max": 29952, "rate": 25 },
+      { "min": 29953, "max": 46080, "rate": 30 },
+      { "min": 46081, "max": 999999999, "rate": 35 }
+    ],
+    "social_security": 10.5,
+    "description": "Growing expat community with affordable living"
+  },
+  {
+    "id": "portugal",
+    "name": "Portugal",
+    "flag": "🇵🇹",
+    "flag_code": "pt",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 1800,
+    "tax_brackets": [
+      { "min": 0, "max": 7703, "rate": 14.5 },
+      { "min": 7704, "max": 11623, "rate": 21 },
+      { "min": 11624, "max": 16472, "rate": 26.5 },
+      { "min": 16473, "max": 21321, "rate": 28.5 },
+      { "min": 21322, "max": 27146, "rate": 35 },
+      { "min": 27147, "max": 39791, "rate": 37 },
+      { "min": 39792, "max": 51997, "rate": 43.5 },
+      { "min": 51998, "max": 81199, "rate": 45 },
+      { "min": 81200, "max": 999999999, "rate": 48 }
+    ],
+    "social_security": 11,
+    "description": "NHR regime for expats (special tax benefits)"
+  },
+  {
+    "id": "spain",
+    "name": "Spain",
+    "flag": "🇪🇸",
+    "flag_code": "es",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 2000,
+    "tax_brackets": [
+      { "min": 0, "max": 12450, "rate": 19 },
+      { "min": 12451, "max": 20200, "rate": 24 },
+      { "min": 20201, "max": 35200, "rate": 30 },
+      { "min": 35201, "max": 60000, "rate": 37 },
+      { "min": 60001, "max": 300000, "rate": 45 },
+      { "min": 300001, "max": 999999999, "rate": 47 }
+    ],
+    "social_security": 6.35,
+    "description": "Digital nomad visa available"
+  },
+  {
+    "id": "mexico",
+    "name": "Mexico",
+    "flag": "🇲🇽",
+    "flag_code": "mx",
+    "currency": "MXN",
+    "currency_symbol": "MX$",
+    "cost_of_living": 1100,
+    "tax_brackets": [
+      { "min": 0, "max": 387, "rate": 1.92 },
+      { "min": 388, "max": 3282, "rate": 6.4 },
+      { "min": 3283, "max": 5768, "rate": 10.88 },
+      { "min": 5769, "max": 6705, "rate": 16 },
+      { "min": 6706, "max": 8028, "rate": 17.92 },
+      { "min": 8029, "max": 16193, "rate": 21.36 },
+      { "min": 16194, "max": 25522, "rate": 23.52 },
+      { "min": 25523, "max": 48726, "rate": 30 },
+      { "min": 48727, "max": 64969, "rate": 32 },
+      { "min": 64970, "max": 194907, "rate": 34 },
+      { "min": 194908, "max": 999999999, "rate": 35 }
+    ],
+    "social_security": 0,
+    "description": "Popular for US remote workers"
+  },
+  {
+    "id": "costa-rica",
+    "name": "Costa Rica",
+    "flag": "🇨🇷",
+    "flag_code": "cr",
+    "currency": "CRC",
+    "currency_symbol": "₡",
+    "cost_of_living": 1600,
+    "tax_brackets": [
+      { "min": 0, "max": 1568, "rate": 0 },
+      { "min": 1569, "max": 2301, "rate": 10 },
+      { "min": 2302, "max": 4038, "rate": 15 },
+      { "min": 4039, "max": 8075, "rate": 20 },
+      { "min": 8076, "max": 999999999, "rate": 25 }
+    ],
+    "social_security": 10.67,
+    "description": "Pura Vida lifestyle with stable democracy"
+  },
+  {
+    "id": "malaysia",
+    "name": "Malaysia",
+    "flag": "🇲🇾",
+    "flag_code": "my",
+    "currency": "MYR",
+    "currency_symbol": "RM",
+    "cost_of_living": 1100,
+    "tax_brackets": [
+      { "min": 0, "max": 1111, "rate": 0 },
+      { "min": 1112, "max": 4444, "rate": 1 },
+      { "min": 4445, "max": 7777, "rate": 3 },
+      { "min": 7778, "max": 11111, "rate": 8 },
+      { "min": 11112, "max": 15555, "rate": 13 },
+      { "min": 15556, "max": 22222, "rate": 21 },
+      { "min": 22223, "max": 55555, "rate": 24 },
+      { "min": 55556, "max": 88888, "rate": 24.5 },
+      { "min": 88889, "max": 133333, "rate": 25 },
+      { "min": 133334, "max": 222222, "rate": 26 },
+      { "min": 222223, "max": 444444, "rate": 28 },
+      { "min": 444445, "max": 999999999, "rate": 30 }
+    ],
+    "social_security": 0,
+    "description": "MM2H visa program for expats"
+  },
+  {
+    "id": "philippines",
+    "name": "Philippines",
+    "flag": "🇵🇭",
+    "flag_code": "ph",
+    "currency": "PHP",
+    "currency_symbol": "₱",
+    "cost_of_living": 900,
+    "tax_brackets": [
+      { "min": 0, "max": 4166, "rate": 0 },
+      { "min": 4167, "max": 6666, "rate": 15 },
+      { "min": 6667, "max": 13333, "rate": 20 },
+      { "min": 13334, "max": 33333, "rate": 25 },
+      { "min": 33334, "max": 133333, "rate": 30 },
+      { "min": 133334, "max": 999999999, "rate": 35 }
+    ],
+    "social_security": 4.5,
+    "description": "English-speaking with low cost of living"
+  },
+  {
+    "id": "colombia",
+    "name": "Colombia",
+    "flag": "🇨🇴",
+    "flag_code": "co",
+    "currency": "COP",
+    "currency_symbol": "COL$",
+    "cost_of_living": 1000,
+    "tax_brackets": [
+      { "min": 0, "max": 272, "rate": 0 },
+      { "min": 273, "max": 425, "rate": 19 },
+      { "min": 426, "max": 1025, "rate": 28 },
+      { "min": 1026, "max": 2167, "rate": 33 },
+      { "min": 2168, "max": 4742, "rate": 35 },
+      { "min": 4743, "max": 7750, "rate": 37 },
+      { "min": 7751, "max": 999999999, "rate": 39 }
+    ],
+    "social_security": 8,
+    "description": "Medellin digital nomad hub"
+  },
+  {
+    "id": "india",
+    "name": "India",
+    "flag": "🇮🇳",
+    "flag_code": "in",
+    "currency": "INR",
+    "currency_symbol": "₹",
+    "cost_of_living": 700,
+    "tax_brackets": [
+      { "min": 0, "max": 2941, "rate": 0 },
+      { "min": 2942, "max": 5882, "rate": 5 },
+      { "min": 5883, "max": 8823, "rate": 10 },
+      { "min": 8824, "max": 11764, "rate": 15 },
+      { "min": 11765, "max": 14705, "rate": 20 },
+      { "min": 14706, "max": 17647, "rate": 25 },
+      { "min": 17648, "max": 999999999, "rate": 30 }
+    ],
+    "social_security": 12,
+    "description": "Growing tech hub with low costs"
+  },
+  {
+    "id": "brazil",
+    "name": "Brazil",
+    "flag": "🇧🇷",
+    "flag_code": "br",
+    "currency": "BRL",
+    "currency_symbol": "R$",
+    "cost_of_living": 1300,
+    "tax_brackets": [
+      { "min": 0, "max": 352, "rate": 0 },
+      { "min": 353, "max": 471, "rate": 7.5 },
+      { "min": 472, "max": 625, "rate": 15 },
+      { "min": 626, "max": 777, "rate": 22.5 },
+      { "min": 778, "max": 999999999, "rate": 27.5 }
+    ],
+    "social_security": 11,
+    "description": "Largest Latin American economy"
+  },
+  {
+    "id": "poland",
+    "name": "Poland",
+    "flag": "🇵🇱",
+    "flag_code": "pl",
+    "currency": "PLN",
+    "currency_symbol": "zł",
+    "cost_of_living": 1400,
+    "tax_brackets": [
+      { "min": 0, "max": 120000, "rate": 12 },
+      { "min": 120001, "max": 999999999, "rate": 32 }
+    ],
+    "social_security": 13.71,
+    "description": "Growing tech scene in Warsaw and Krakow"
+  },
+  {
+    "id": "czech-republic",
+    "name": "Czech Republic",
+    "flag": "🇨🇿",
+    "flag_code": "cz",
+    "currency": "CZK",
+    "currency_symbol": "Kč",
+    "cost_of_living": 1500,
+    "tax_brackets": [
+      { "min": 0, "max": 999999999, "rate": 15 }
+    ],
+    "social_security": 11,
+    "description": "Flat tax rate with good quality of life"
+  },
+  {
+    "id": "estonia",
+    "name": "Estonia",
+    "flag": "🇪🇪",
+    "flag_code": "ee",
+    "currency": "EUR",
+    "currency_symbol": "€",
+    "cost_of_living": 1600,
+    "tax_brackets": [
+      { "min": 0, "max": 999999999, "rate": 20 }
+    ],
+    "social_security": 1.6,
+    "description": "E-Residency program for digital entrepreneurs"
+  }
+]
